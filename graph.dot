@@ -1,0 +1,7 @@
+graph SocialGraph {
+    "Bob";
+    "Bob" -- "Alice";
+    "Alice";
+    "Alice" -- "Charlie";
+    "Charlie";
+}
