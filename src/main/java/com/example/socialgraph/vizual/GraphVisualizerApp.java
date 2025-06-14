@@ -34,7 +34,6 @@ public class GraphVisualizerApp {
             frame.add(graphPanel, BorderLayout.CENTER);
             frame.add(controlPanel, BorderLayout.SOUTH);
 
-            // Меню с загрузкой/сохранением
             JMenuBar menuBar = new JMenuBar();
             JMenu fileMenu = new JMenu("Файл");
 
@@ -62,17 +61,14 @@ public class GraphVisualizerApp {
                 }
             });
 
-            // Поле для выбора количества узлов (от 1 до 100, шаг 1)
             SpinnerNumberModel nodesModel = new SpinnerNumberModel(10, 1, 100, 1);
             JSpinner numberOfNodesSpinner = new JSpinner(nodesModel);
             JLabel nodesLabel = new JLabel("Количество узлов:");
 
-// Поле для выбора максимума связей (от 0 до 10, шаг 1)
             SpinnerNumberModel connectionsModel = new SpinnerNumberModel(3, 0, 100, 1);
             JSpinner maxConnectionsSpinner = new JSpinner(connectionsModel);
             JLabel connectionsLabel = new JLabel("Максимум связей на узел:");
 
-// Кнопка генерации
             JButton generateGraphButton = new JButton("Сгенерировать граф");
             generateGraphButton.addActionListener(e -> {
                 try {

@@ -77,13 +77,12 @@ public class GraphPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Рисуем рёбра, рисуем каждое ребро один раз
         Set<String> drawnEdges = new HashSet<>();
         for (Node from : nodes) {
             for (Node to : graph.getConnections(from)) {
                 String key = from.toString().compareTo(to.toString()) < 0 ?
-                        from.toString() + "--" + to.toString() :
-                        to.toString() + "--" + from.toString();
+                        from + "--" + to :
+                        to + "--" + from;
                 if (!drawnEdges.contains(key)) {
                     Point p1 = nodePositions.get(from);
                     Point p2 = nodePositions.get(to);
@@ -96,7 +95,6 @@ public class GraphPanel extends JPanel {
             }
         }
 
-        // Рисуем узлы
         for (Node node : nodes) {
             Point p = nodePositions.get(node);
             if (p == null) continue;
@@ -115,7 +113,6 @@ public class GraphPanel extends JPanel {
         return graph;
     }
 
-    // Устанавливаем граф и расставляем вершины по кругу для простоты визуализации
     public void setGraph(Graph<Node> newGraph) {
         this.graph = newGraph;
         nodes.clear();
@@ -124,7 +121,6 @@ public class GraphPanel extends JPanel {
 
         nodeCounter = nodes.size();
 
-        // Расставим вершины по кругу
         int centerX = getWidth() / 2;
         int centerY = getHeight() / 2;
         int radius = Math.min(centerX, centerY) - 50;
